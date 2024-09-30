@@ -36,7 +36,7 @@ public class camera_control : MonoBehaviour
         //float inputMouseY = inputMouse.GetAxis("Mouse Y")
         //transform.pasitiop += nev Vector3();
 
-        mouseX = Input.GetAxis("Mouse X") * sM * Time.deltaTime;
+        mouseX = Input.GetAxis("Mouse X") * sM * Time.deltaTime*1.2f;
         mouseY = Input.GetAxis("Mouse Y") * sM * Time.deltaTime;
         ///if (i>5){
             ///a=p3.transform.eulerAngles.x; 
