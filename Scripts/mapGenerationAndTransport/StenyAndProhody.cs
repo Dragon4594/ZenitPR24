@@ -32,22 +32,22 @@ public class StenyAndProhody : MonoBehaviour
     public GameObject r48;
     
 
-    public static int a=6;
+    public static int a=7;
     public static int[,] arr = new int [a,a];
     
     public static  int WhereAreGoing(){
-        for(int i =0;i<6;i++){//поиск в какой комнате мы находились
+        for(int i =0;i<7;i++){//поиск в какой комнате мы находились
                 if (arr[0,i]>10){
-                Debug.Log(i);   
+                //Debug.Log(i);   
                     arr[0,i]=arr[0,i]-10;
-                    for(int t =0;t<6;t++){//в какой проход мы вошли в прошлой комнате это значение в массиве увеличиваются в скрипте TeleportInTanel
+                    for(int t =0;t<7;t++){//в какой проход мы вошли в прошлой комнате это значение в массиве увеличиваются в скрипте TeleportInTanel
                         if(arr[t,i]==98){
                             arr[t,i]=arr[t,i]-10;
                             arr[0,t]=arr[0,t]+10;//в какую комнату мы должны попасть по таблице
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(98);
-                            for (int g=0; g<6;g++){
+                            for (int g=0; g<7;g++){
                                 if (arr[g,t]==22){
                                     return 22; // в какой проход мы должны попасть
                                 }
@@ -63,7 +63,7 @@ public class StenyAndProhody : MonoBehaviour
                             arr[0,t]=arr[0,t]+10;
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(76);
-                            for (int g=0; g<6;g++){
+                            for (int g=0; g<7;g++){
                                 if (arr[g,t]==44){
                                     return 44; // в какой проход мы должны попасть
                                 }
@@ -74,11 +74,13 @@ public class StenyAndProhody : MonoBehaviour
                             //фыход из процидуры конец массива
                         
                         if(arr[t,i]==54){
+                            
                             arr[t,i]=arr[t,i]-10;
                             arr[0,t]=arr[0,t]+10;
+                            
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(54);
-                            for (int g=0; g<6;g++){
+                            for (int g=0; g<7;g++){
                                 if (arr[g,t]==66){
                                     return 66; // в какой проход мы должны попасть
                                 }
@@ -93,7 +95,7 @@ public class StenyAndProhody : MonoBehaviour
                             arr[0,t]=arr[0,t]+10;
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(32);
-                            for (int g=0; g<6;g++){
+                            for (int g=0; g<7;g++){
                                 if (arr[g,t]==88){
                                     return 88; // в какой проход мы должны попасть
                                 }
@@ -108,9 +110,13 @@ public class StenyAndProhody : MonoBehaviour
             return 0;
         }
     public void gensten(){
-        for (int i=0;i<6;i++){
+        Destroy(GameObject.Find("Emty22"));
+        Destroy(GameObject.Find("Emty88"));
+        Destroy(GameObject.Find("Emty44"));
+        Destroy(GameObject.Find("Emty66"));
+        for (int i=0;i<7;i++){
                 if (arr[0,i]>10){//комната в которую мы хотим перейти
-                    for(int g=0; g<6;g++){//сделать распознование в какой комнате должны спавнится двери заспавнить двери написать логику спавна стен
+                    for(int g=0; g<7;g++){//сделать распознование в какой комнате должны спавнится двери заспавнить двери написать логику спавна стен
                         if(arr[0,i]==11){
                             play.transform.position=r18.transform.position;
                                     play.transform.rotation = Quaternion.Euler(0,90,0);
@@ -284,49 +290,65 @@ public class StenyAndProhody : MonoBehaviour
                        ////////////////////////////////////////////////////// 
                         
                     }
-                    /*if(arr[0,i]==12){
+                    if(arr[0,i]==12){
                         if(r2==0){
-                            GameObject Empty222 = Instantiate(stena,r22.transform.position,Quaternion.Euler(0,90*3,0));
+                            GameObject Empty22 = Instantiate(stena,r22.transform.position,Quaternion.Euler(90,90,0));
+                            Empty22.name="Emty22";
                         }
                         if(r4==0){
-                            GameObject Empty442 = Instantiate(stena,r24.transform.position,Quaternion.Euler(0,0,0));
+                            GameObject Empty44 = Instantiate(stena,r24.transform.position,Quaternion.Euler(90,0,0));
+                            Empty44.name="Emty44";
                         }
                         if(r6==0){
-                            GameObject Empty662 = Instantiate(stena,r26.transform.position,Quaternion.Euler(0,0,0));
+                            GameObject Empty66 = Instantiate(stena,r26.transform.position,Quaternion.Euler(90,0,0));
+                            Empty66.name="Emty66";
                         }
                         if(r8==0){
-                            GameObject Empty882 = Instantiate(stena,r28.transform.position,Quaternion.Euler(0,90*3,0));
+                            GameObject Empty88 = Instantiate(stena,r28.transform.position,Quaternion.Euler(90,90,0));
+                            Empty88.name="Emty88";
                         }
                     }
 
                     if(arr[0,i]==13){
                         if(r2==0){
-                            GameObject Empty223 = Instantiate(stena,r32.transform.position,Quaternion.Euler(0,90*3,0));
+                            GameObject Empty22 = Instantiate(stena,r32.transform.position,Quaternion.Euler(90,90,0));
+                            Empty22.name="Emty22";
                         }
                         if(r4==0){
-                            GameObject Empty443 = Instantiate(stena,r34.transform.position,Quaternion.Euler(0,0,0));
+                            GameObject Empty44 = Instantiate(stena,r34.transform.position,Quaternion.Euler(90,0,0));
+                            Empty44.name="Emty44";
                         }
                         if(r6==0){
-                            GameObject Empty663 = Instantiate(stena,r36.transform.position,Quaternion.Euler(0,0,0));
+                            GameObject Empty66 = Instantiate(stena,r36.transform.position,Quaternion.Euler(90,0,0));
+                            Empty66.name="Emty66";
                         }
                         if(r8==0){
-                            GameObject Empty883 = Instantiate(stena,r38.transform.position,Quaternion.Euler(0,90*3,0));
+                            GameObject Empty88 = Instantiate(stena,r38.transform.position,Quaternion.Euler(90,90,0));
+                            Empty88.name="Emty88";
                         }
                     }
                     if(arr[0,i]==14){
                         if(r2==0){
-                            GameObject Empty224 = Instantiate(stena,r42.transform.position,Quaternion.Euler(0,90*3,0));
+                            GameObject Empty22 = Instantiate(stena,r42.transform.position,Quaternion.Euler(90,90,0));
+                            Empty22.name="Emty22";
                         }
                         if(r4==0){
-                            GameObject Empty444 = Instantiate(stena,r44.transform.position,Quaternion.Euler(0,0,0));
+                            GameObject Empty44 = Instantiate(stena,r44.transform.position,Quaternion.Euler(90,0,0));
+                            Empty44.name="Emty44";
                         }
                         if(r6==0){
-                            GameObject Empty664 = Instantiate(stena,r46.transform.position,Quaternion.Euler(0,0,0));
+                            GameObject Empty66 = Instantiate(stena,r46.transform.position,Quaternion.Euler(90,0,0));
+                            Empty66.name="Emty66";
                         }
                         if(r8==0){
-                            GameObject Empty884 = Instantiate(stena,r48.transform.position,Quaternion.Euler(0,90*3,0));
+                            GameObject Empty88 = Instantiate(stena,r48.transform.position,Quaternion.Euler(90,90,0));
+                            Empty88.name="Emty88";
                         }
-                    }*/
+                    }
+                    r2=0;
+                    r4=0;
+                    r6=0;
+                    r8=0;
                 }
             }
     }
@@ -336,6 +358,7 @@ public class StenyAndProhody : MonoBehaviour
     //88 w
     
      public void OnTriggerStay (Collider other){///переписать что в arr[x,y] х а что у?
+     
         if(other.gameObject.name == "Player"){
             
             z=WhereAreGoing();// переход в другую комнату в массиве мы  знаем в какую дверь должны прийти  оно хранится в z

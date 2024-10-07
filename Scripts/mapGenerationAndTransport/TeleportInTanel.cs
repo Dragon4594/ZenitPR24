@@ -18,41 +18,43 @@ public class TeleportInTanel : MonoBehaviour
     }
     public int go(int o,int t){
         if (o==22){
-            for(int i=0;i<6;i++){
+            for(int i=0;i<7;i++){
                 if(StenyAndProhody.arr[i,d]==22){
                     StenyAndProhody.arr[i,d]=StenyAndProhody.arr[i,d]+10;
-                    Debug.Log("t2");
+                    //Debug.Log("t2");
                     return 0;
                 }
             }
         }
         if (o==88){//выяснить почему если arr[0,5]==13 не прибовляет 88+10?
-             for(int i=0;i<6;i++){
+                //Debug.Log(d);
+             for(int i=0;i<7;i++){
+                //Debug.Log(StenyAndProhody.arr[i,d]);
                 if(StenyAndProhody.arr[i,d]==88){
                     StenyAndProhody.arr[i,d]=StenyAndProhody.arr[i,d]+10;
-                    Debug.Log("t88");
+                    
                     return 0;
                 }
             }
 
         }
         if (o==66){
-             for(int i=0;i<6;i++){
+             for(int i=0;i<7;i++){
                 if(StenyAndProhody.arr[i,d]==66){
                     StenyAndProhody.arr[i,d]=StenyAndProhody.arr[i,d]+10;
-                    Debug.Log("t66");
+                    //Debug.Log("t66");
                     return 0;
                 }
             }
 
         }
         if (o==44){
-             for(int i=0;i<6;i++){
+             for(int i=0;i<7;i++){
                 
                 if(StenyAndProhody.arr[i,d]==44){
                     
                     StenyAndProhody.arr[i,d]=StenyAndProhody.arr[i,d]+10;
-                   Debug.Log("t44");
+                   //Debug.Log("t44");
                     return 0;
                 }
             }
@@ -65,7 +67,7 @@ public class TeleportInTanel : MonoBehaviour
         if ((other.gameObject.name == "Player")&(Input.GetKey(KeyCode.R)))
         {
             if (StenyAndProhody.arr[0,1]==11){
-                for (int i=1;i<6;i++){
+                for (int i=1;i<7;i++){
                     if(StenyAndProhody.arr[i,1]>0){
                         StenyAndProhody.arr[i,1]=StenyAndProhody.arr[i,1]+10;
                     }
@@ -73,13 +75,14 @@ public class TeleportInTanel : MonoBehaviour
                 }
             }else{//
             //обозвать их  88 22 66 44 соответственно вверх низ право лево
-                for(int i=0;i<6;i++){
+                for(int i=0;i<7;i++){
                     if(StenyAndProhody.arr[0,i]>10){
-                        d=StenyAndProhody.arr[0,i]-10;
+                        //d=StenyAndProhody.arr[0,i]-10;
+                        d=i;
                     }
                 }
                 //Debug.Log(this.gameObject.name[5]);
-                Debug.Log(d);
+                //Debug.Log(d);
                 
                 
                 if (this.gameObject.name == "Emty22"){
@@ -97,7 +100,9 @@ public class TeleportInTanel : MonoBehaviour
                 
             }
             other.transform.position = a.transform.position;
+            other.transform.rotation = Quaternion.Euler(0,180,0);
             camera.transform.position = a.transform.position;
+            camera.transform.rotation = Quaternion.Euler(0,180,0);
 
         }
     }
