@@ -32,22 +32,22 @@ public class StenyAndProhody : MonoBehaviour
     public GameObject r48;
     
 
-    public static int a=7;
+    public static int a=7;//кол-во комнатт на уровне если число 5 то из различных заготовок сгенерируются уровень из 5 
     public static int[,] arr = new int [a,a];
     
     public static  int WhereAreGoing(){
-        for(int i =0;i<7;i++){//поиск в какой комнате мы находились
+        for(int i =0;i<a;i++){//поиск в какой комнате мы находились
                 if (arr[0,i]>10){
                 //Debug.Log(i);   
                     arr[0,i]=arr[0,i]-10;
-                    for(int t =0;t<7;t++){//в какой проход мы вошли в прошлой комнате это значение в массиве увеличиваются в скрипте TeleportInTanel
+                    for(int t =0;t<a;t++){//в какой проход мы вошли в прошлой комнате это значение в массиве увеличиваются в скрипте TeleportInTanel
                         if(arr[t,i]==98){
                             arr[t,i]=arr[t,i]-10;
                             arr[0,t]=arr[0,t]+10;//в какую комнату мы должны попасть по таблице
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(98);
-                            for (int g=0; g<7;g++){
+                            for (int g=0; g<a;g++){
                                 if (arr[g,t]==22){
                                     return 22; // в какой проход мы должны попасть
                                 }
@@ -63,7 +63,7 @@ public class StenyAndProhody : MonoBehaviour
                             arr[0,t]=arr[0,t]+10;
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(76);
-                            for (int g=0; g<7;g++){
+                            for (int g=0; g<a;g++){
                                 if (arr[g,t]==44){
                                     return 44; // в какой проход мы должны попасть
                                 }
@@ -80,7 +80,7 @@ public class StenyAndProhody : MonoBehaviour
                             
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(54);
-                            for (int g=0; g<7;g++){
+                            for (int g=0; g<a;g++){
                                 if (arr[g,t]==66){
                                     return 66; // в какой проход мы должны попасть
                                 }
@@ -95,7 +95,7 @@ public class StenyAndProhody : MonoBehaviour
                             arr[0,t]=arr[0,t]+10;
                             //Debug.Log(arr[0,t]);
                             //Debug.Log(32);
-                            for (int g=0; g<7;g++){
+                            for (int g=0; g<a;g++){
                                 if (arr[g,t]==88){
                                     return 88; // в какой проход мы должны попасть
                                 }
@@ -114,9 +114,9 @@ public class StenyAndProhody : MonoBehaviour
         Destroy(GameObject.Find("Emty88"));
         Destroy(GameObject.Find("Emty44"));
         Destroy(GameObject.Find("Emty66"));
-        for (int i=0;i<7;i++){
+        for (int i=0;i<a;i++){
                 if (arr[0,i]>10){//комната в которую мы хотим перейти
-                    for(int g=0; g<7;g++){//сделать распознование в какой комнате должны спавнится двери заспавнить двери написать логику спавна стен
+                    for(int g=0; g<a;g++){//сделать распознование в какой комнате должны спавнится двери заспавнить двери написать логику спавна стен
                         if(arr[0,i]==11){
                             play.transform.position=r18.transform.position;
                                     play.transform.rotation = Quaternion.Euler(0,90,0);
@@ -291,6 +291,7 @@ public class StenyAndProhody : MonoBehaviour
                         
                     }
                     if(arr[0,i]==12){
+                        
                         if(r2==0){
                             GameObject Empty22 = Instantiate(stena,r22.transform.position,Quaternion.Euler(90,90,0));
                             Empty22.name="Emty22";
@@ -300,6 +301,7 @@ public class StenyAndProhody : MonoBehaviour
                             Empty44.name="Emty44";
                         }
                         if(r6==0){
+                            
                             GameObject Empty66 = Instantiate(stena,r26.transform.position,Quaternion.Euler(90,0,0));
                             Empty66.name="Emty66";
                         }
@@ -349,14 +351,16 @@ public class StenyAndProhody : MonoBehaviour
                     r4=0;
                     r6=0;
                     r8=0;
+                    
                 }
             }
+            
     }
     //22 s
     //44 a
     //66 d
     //88 w
-    
+    public Vector3 V3;
      public void OnTriggerStay (Collider other){///переписать что в arr[x,y] х а что у?
      
         if(other.gameObject.name == "Player"){
@@ -365,6 +369,11 @@ public class StenyAndProhody : MonoBehaviour
            
             //////генерация стен в комнате 
             gensten();
+            
+            /*GameObject.Find("Main Camera").transform.position=camera.transform.position+new Vector3(0,0,0);
+            GameObject.Find("Main Camera").transform.position=new Vector3(0,0,0);
+            Debug.Log("yes");
+            camera.transform.rotation = Quaternion.Euler(0,90,0);*/
             /*for(int i=0;i<6;i++){
                 for(int t=0;t<6;t++){
                     Debug.Log(arr[i,t]);

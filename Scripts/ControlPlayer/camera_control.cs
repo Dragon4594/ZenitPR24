@@ -35,11 +35,15 @@ public class camera_control : MonoBehaviour
         //Input.GetAxis("Horizontal");//A=-1;D=1
         //float inputMouseY = inputMouse.GetAxis("Mouse Y")
         //transform.pasitiop += nev Vector3();
+        
+        /*GameObject.Find("u").transform.rotation=GameObject.Find("PlayerCamera").transform.rotation;
+        GameObject.Find("Main Camera").transform.rotation=GameObject.Find("u").transform.rotation;
+        GameObject.Find("Main Camera").transform.position=GameObject.Find("u").transform.position+new Vector3(0,1,-6);*/
 
         mouseX = Input.GetAxis("Mouse X") * sM * Time.deltaTime*1.2f;
-        mouseY = Input.GetAxis("Mouse Y") * sM * Time.deltaTime;
+        mouseY = Input.GetAxis("Mouse Y") * sM * Time.deltaTime*1.1f;
         ///if (i>5){
-            ///a=p3.transform.eulerAngles.x; 
+           // a=p3.transform.eulerAngles.x; 
             if ((a>60.0)&(a<=90.0)){
             Player2.Rotate(359 * new Vector3(1, 0, 0));
             }
