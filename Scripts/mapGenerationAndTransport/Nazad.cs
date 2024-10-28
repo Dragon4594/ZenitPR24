@@ -9,6 +9,7 @@ public class Nazad : MonoBehaviour
     public GameObject a;
     public int u = StenyAndProhody.a;
     public StenyAndProhody StenyAndProhody;
+    public float f=0;
     /*public void Awake(){
         StenyAndProhody = GetComponent<StenyAndProhody>();
         
@@ -17,7 +18,11 @@ public class Nazad : MonoBehaviour
     
     // Start is called before the first frame update
     void OnTriggerStay(Collider other){
-        if(other.gameObject.name == "Player"){
+         if ((other.gameObject.name=="Player")&(Input.GetKey(KeyCode.R))){
+                f=f+Time.deltaTime;
+        }
+        if((f>=3.0)&(other.gameObject.name=="Player")){
+            TextDor.nazad=0;
             if (StenyAndProhody.arr[0,1]==11){
                 StenyAndProhody.arr[2,1]=88;
                 a.transform.position=GameObject.Find("dortriger").transform.position;
@@ -48,6 +53,11 @@ public class Nazad : MonoBehaviour
     }
     }
     void Update(){
-       
+       if(f>0){
+            f=f+Time.deltaTime*2;
+        }
+        if (f>=3.1){
+            f=0;
+        }
         }
 }

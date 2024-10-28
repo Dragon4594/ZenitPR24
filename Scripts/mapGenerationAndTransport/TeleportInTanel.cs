@@ -8,6 +8,7 @@ public class TeleportInTanel : MonoBehaviour
     public int d;
     public GameObject a;
     public GameObject camera;
+    public float f=0;
     /*public void Awake(){
         StenyAndProhody = GetComponent<StenyAndProhody>();
     }*/
@@ -54,7 +55,7 @@ public class TeleportInTanel : MonoBehaviour
                 if(StenyAndProhody.arr[i,d]==44){
                     
                     StenyAndProhody.arr[i,d]=StenyAndProhody.arr[i,d]+10;
-                   //Debug.Log("t44");
+                  
                     return 0;
                 }
             }
@@ -64,9 +65,12 @@ public class TeleportInTanel : MonoBehaviour
     }
     void OnTriggerStay (Collider other)
     {
-        if ((other.gameObject.name == "Player")&(Input.GetKey(KeyCode.R)))
-        {
-            if (StenyAndProhody.arr[0,1]==11){
+        if ((other.gameObject.name=="Player")&(Input.GetKey(KeyCode.R))){
+                f=f+Time.deltaTime;
+        }
+        if((f>=3.0)&(other.gameObject.name=="Player")){
+            
+       if (StenyAndProhody.arr[0,1]==11){
                 for (int i=1;i<7;i++){
                     if(StenyAndProhody.arr[i,1]>0){
                         StenyAndProhody.arr[i,1]=StenyAndProhody.arr[i,1]+10;
@@ -83,8 +87,7 @@ public class TeleportInTanel : MonoBehaviour
                 }
                 //Debug.Log(this.gameObject.name[5]);
                 //Debug.Log(d);
-                
-                
+                 
                 if (this.gameObject.name == "Emty22"){
                     go(22,d);
                 }
@@ -93,6 +96,7 @@ public class TeleportInTanel : MonoBehaviour
                 }
                 if (this.gameObject.name == "Emty44"){
                     go(44,d);
+                     
                 }
                 if (this.gameObject.name == "Emty66"){
                     go(66,d);
@@ -101,14 +105,19 @@ public class TeleportInTanel : MonoBehaviour
             }
             other.transform.position = a.transform.position;
             other.transform.rotation = Quaternion.Euler(0,180,0);
-            camera.transform.position = a.transform.position;
             camera.transform.rotation = Quaternion.Euler(0,180,0);
-
-        }
     }
+    }
+    
     // Update is called once per frame
     void Update()
     {
-       
+        if(f>0){
+            f=f+Time.deltaTime*2;
+        }
+        if (f>=3.1){
+            f=0;
+        }
     }
+        
 }
