@@ -491,7 +491,7 @@ public class StenyAndProhody : MonoBehaviour
     }}
     
     
-    /*arr[0,0]=0;
+    arr[0,0]=0;
     arr[0,1]=11;
     arr[0,2]=2;
     arr[0,3]=3;
@@ -532,7 +532,7 @@ public class StenyAndProhody : MonoBehaviour
     arr[5,2]=44;
     arr[5,3]=0;
     arr[5,4]=22;
-    arr[5,5]=0;*/
+    arr[5,5]=0;
     }
 
     // Update is called once per frame
